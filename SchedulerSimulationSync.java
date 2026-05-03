@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.Semaphore;
 // ANSI Color Codes for enhanced terminal output
 class Colors {
     public static final String RESET = "\u001B[0m";
@@ -39,7 +40,7 @@ class SharedResources {
     public static final ReentrantLock lock = new ReentrantLock();// TODO #1: Add a ReentrantLock(s) here to protect critical sections
     // Example: public static final ReentrantLock lock = new ReentrantLock();
     
-    // TODO #2: Add a Semaphore to limit concurrent process execution
+    public static final Semaphore cpuSemaphore = new Semaphore(1); // TODO #2: Add a Semaphore to limit concurrent process execution
     // Example: public static final Semaphore cpuSemaphore = new Semaphore(1);
     
     // Method to increment context switch counter
@@ -100,6 +101,7 @@ class Process implements Runnable {
         // This ensures only allowed number of processes run simultaneously
         
         try {
+             SharedResources.cpuSemaphore.acquire();
             if (startTime == -1) {
                 startTime = System.currentTimeMillis();
             }
@@ -157,9 +159,10 @@ class Process implements Runnable {
                                   Colors.RESET);
             }
             System.out.println();
-            
+          } catch (InterruptedException e) {
+            System.out.println(Colors.RED + "  ✗ " + name + " failed to acquire CPU." + Colors.RESET);  
         } finally {
-            // TODO #4: Release CPU semaphore here
+             SharedResources.cpuSemaphore.release(); // TODO #4: Release CPU semaphore here
             // Always release in finally block to prevent deadlocks!
         }
     }
