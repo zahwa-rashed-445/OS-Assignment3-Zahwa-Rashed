@@ -1,8 +1,8 @@
 # Assignment 3 - Complete Documentation
 
-**Student Name**: [Your Full Name]  
-**Student ID**: [Your ID]  
-**Date Submitted**: [Submission Date]
+**Student Name**:Zahwa Rashed ALRshidi
+**Student ID**: 445052295  
+**Date Submitted**: May 4,2026
 
 ---
 
@@ -14,7 +14,7 @@
 > Set sharing to "Anyone with the link can view".
 > Test the link in incognito/private mode before submitting.
 
-**Video Link**: [Paste your personal Gmail Google Drive link here]
+**Video Link**: [https://drive.google.com/file/d/1GELWO_SZ17dyF6uoZHanlBBWoOnyvbir/view?usp=drive_link]
 
 **Video filename**: `[YourStudentID]_Assignment3_Synchronization.mp4`
 
@@ -291,12 +291,12 @@ Imagine a single-person bathroom (the resource) in a busy cafe. Even if ten peop
 **Repository URL**: 
 
 **Number of commits**: 
-
+4
 **Commit messages**: 
-1. 
-2. 
-3. 
-4. 
+1. Set my student ID : [445052295]
+2. Add ReentranLock to protect counter variable
+3. Add Semaphore to control concurrent CPU access
+4. Add ReentranLock to protect execution Log
 
 ---
 
